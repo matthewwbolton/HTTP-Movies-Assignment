@@ -31,7 +31,9 @@ const UpdateMovie = props => {
     Axios.put(`http://localhost:5000/api/movies/${params.id}`, state)
       .then(res => {
         console.log(res);
-        push(`/movies/${params.id}`);
+        props.setMovieList(props.movie);
+        push(`/`);
+        props.getMovieList();
       })
       .catch(err => console.log(err));
   };
