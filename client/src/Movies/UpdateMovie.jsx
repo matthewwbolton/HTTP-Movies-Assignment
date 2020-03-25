@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import Axios from "axios";
 
 const UpdateMovie = props => {
   const [state, setState] = useState({
@@ -10,6 +11,8 @@ const UpdateMovie = props => {
 
   const params = useParams();
   console.log("This is params.id", params.id);
+
+  const { push } = useHistory();
 
   const handleChange = e => {
     e.preventDefault();
@@ -23,7 +26,15 @@ const UpdateMovie = props => {
     }
   }, [props.movie, params.id]);
 
-  const handleSubmit = e => {};
+  const handleSubmit = e => {
+    e.preventDefault();
+    Axios.put(`http://localhost:5000/api/movies/${params.id}`, state)
+      .then(res => {
+        console.log(res);
+        push(`/movies/${params.id}`);
+      })
+      .catch(err => console.log(err));
+  };
 
   return (
     <div className="saved-list">
@@ -55,6 +66,7 @@ const UpdateMovie = props => {
             placeholder="Metascore"
           />
         </label>
+        <button onClick={handleSubmit}>Submit Changes</button>
       </form>
     </div>
   );

@@ -65,6 +65,16 @@ body {
 .update-button {
   position: absolute;
   margin: 1% 0;
+  top: 85px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+
+.delete-button {
+  position: absolute;
+  margin: 1% 0;
   top: 50px;
   right: 25px;
   border: 1px solid grey;
