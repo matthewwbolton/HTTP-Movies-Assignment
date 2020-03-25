@@ -6,7 +6,8 @@ const UpdateMovie = props => {
   const [state, setState] = useState({
     title: "",
     director: "",
-    metascore: ""
+    metascore: "",
+    stars: ""
   });
 
   const params = useParams();
@@ -16,7 +17,15 @@ const UpdateMovie = props => {
 
   const handleChange = e => {
     e.preventDefault();
-    setState({ ...state, [e.target.name]: e.target.value });
+
+    let value = e.target.value;
+    if (value === "stars") {
+      value = Array.from(value.split(","));
+    }
+
+    setState({ ...state, [e.target.name]: value });
+
+    // setState({ ...state, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
@@ -68,7 +77,16 @@ const UpdateMovie = props => {
             placeholder="Metascore"
           />
         </label>
-        <button onClick={handleSubmit}>Submit Changes</button>
+        <label>
+          Stars:
+          <input
+            onChange={handleChange}
+            name="stars"
+            value={state.stars}
+            placeholder="Stars"
+          />
+        </label>
+        <button onClick={handleSubmit}>Update Movie</button>
       </form>
     </div>
   );
