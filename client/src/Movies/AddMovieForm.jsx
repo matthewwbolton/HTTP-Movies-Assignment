@@ -66,6 +66,7 @@ const AddMovieForm = props => {
           />
         </label>
         <label>
+          Stars:
           <input
             onChange={handleChanges}
             name="stars"

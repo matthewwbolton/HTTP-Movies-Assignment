@@ -16,10 +16,8 @@ const UpdateMovie = props => {
   const { push } = useHistory();
 
   const handleChange = e => {
-    e.preventDefault();
-
     let value = e.target.value;
-    if (value === "stars") {
+    if (e.target.name === "stars") {
       value = Array.from(value.split(","));
     }
 
