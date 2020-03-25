@@ -1,5 +1,15 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import styled from "styled-components";
+
+const NewDiv = styled.div`
+  display: flex;
+  width: 15%;
+`;
+
+const NewLink = styled(Link)`
+  margin: 2%;
+`;
 
 function SavedList({ list }) {
   return (
@@ -16,9 +26,10 @@ function SavedList({ list }) {
           </NavLink>
         );
       })}
-      <div className="home-button">
-        <Link to="/">Home</Link>
-      </div>
+      <NewDiv className="home-button">
+        <NewLink to="/">Home</NewLink>
+        <NewLink to="/add-movie">Add Movie</NewLink>
+      </NewDiv>
     </div>
   );
 }
